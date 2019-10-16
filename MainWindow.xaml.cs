@@ -189,7 +189,7 @@ namespace WPFCalculatrice
             Division
         }
 
-        private void commaBtn_Click(object sender, RoutedEventArgs e)//???????
+        private void commaBtn_Click(object sender, RoutedEventArgs e)
         {
             if (resultText.Text.Contains(","))
             {
