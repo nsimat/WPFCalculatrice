@@ -1,0 +1,208 @@
+﻿<Window x:Class="WPFCalculatrice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WPFCalculatrice"
+        mc:Ignorable="d"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="Ma Calculatrice WPF" Height="525" Width="350">
+
+    <!--<Window.Resources>
+        <SolidColorBrush x:Key="numbersColor" Color="#FF000000"/>
+        <SolidColorBrush x:Key="operatorsColor" Color="#FF574841"/>
+        <SolidColorBrush x:Key="memoryColors" Color="#FF505457"/>
+        <SolidColorBrush x:Key="equalityOperator" Color="#FFF16B16"/>
+    </Window.Resources>-->
+    <Grid Margin="10" Background="#FF171717">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="resultText"
+                 Text="0"
+                 TextAlignment="Right"
+                 FontSize="65"
+                 Grid.ColumnSpan="4" Background="{StaticResource textBoxColor}" Margin="0,0,0,2.2"/>
+        <!--<Label x:Name="resultLabel" 
+               Content="0"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Right"
+               FontSize="65"
+               Grid.ColumnSpan="4"/>-->
+        <!--Ajout des boutons de la première ligne-->
+        <Button x:Name="mcBtn" 
+                Content="mc"
+                Margin="5"
+                FontSize="20"
+                Grid.Row="1" Background="{StaticResource memoryColors}"/>
+        <Button x:Name="mPlusBtn" 
+                Content="m+"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="1" Background="{StaticResource memoryColors}"/>
+        <Button x:Name="mNegativeBtn" 
+                Content="m-"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="1" Background="{StaticResource memoryColors}"/>
+        <Button x:Name="mrBtn" 
+                Content="mr"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="1" Background="{StaticResource memoryColors}"/>
+        <!--Ajout des boutons de la deuxième ligne-->
+        <Button x:Name="cBtn" 
+                Content="c"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="2" Background="{StaticResource operatorsColor}"/>
+        <Button x:Name="plusorminusBtn" 
+                Content="+/-"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="2" Background="{StaticResource operatorsColor}"/>
+        <Button x:Name="divisionBtn"
+                Click="OperationBtn_Click"
+                Content="/"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="2" Background="{StaticResource operatorsColor}"/>
+        <Button x:Name="multiplicationBtn"
+                Click="OperationBtn_Click"
+                Content="*"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="2" Background="{StaticResource operatorsColor}"/>
+        <!--Ajout des boutons de la troisième ligne-->
+        <Button x:Name="sevenBtn"
+                Click="NumberBtn_Click"
+                Content="7"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="3" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="eightBtn" 
+                Click="NumberBtn_Click"
+                Content="8"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="3" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="nineBtn" 
+                Click="NumberBtn_Click"
+                Content="9"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="3" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="negativeBtn" 
+                Click="OperationBtn_Click"
+                Content="-"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="3" Background="{StaticResource operatorsColor}"/>
+        <!--Ajout des boutons de la quatrième ligne-->
+        <Button x:Name="fourBtn" 
+                Click="NumberBtn_Click"
+                Content="4"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="4" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="fiveBtn" 
+                Click="NumberBtn_Click"
+                Content="5"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="4" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="sixBtn" 
+                Click="NumberBtn_Click"
+                Content="6"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="4" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="plusBtn" 
+                Click="OperationBtn_Click"
+                Content="+"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.Row="4" Background="{StaticResource operatorsColor}"/>
+        <!--Ajout des boutons de la cinquième ligne-->
+        <Button x:Name="oneBtn" 
+                Click="NumberBtn_Click"
+                Content="1"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="0"
+                Grid.Row="5" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="twoBtn" 
+                Click="NumberBtn_Click"
+                Content="2"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="1"
+                Grid.Row="5" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="threeBtn" 
+                Click="NumberBtn_Click"
+                Content="3"
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="5" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="equalBtn" 
+                Content="="
+                VerticalContentAlignment="Bottom"
+                Margin="4.8,13.2,5,13.2"
+                FontSize="35"
+                Grid.Row="5"
+                Grid.Column="3"
+                Grid.RowSpan="2" Height="Auto" Background="{StaticResource equalityOperator}" Click="equalBtn_Click_1"/>
+        <!--Ajout des boutons de la sixième ligne-->
+        <Button x:Name="zeroBtn" 
+                Click="NumberBtn_Click"
+                Content="0"
+                Margin="5"
+                FontSize="20"
+                Grid.Row="6"
+                Grid.ColumnSpan="2" Background="{StaticResource numbersColor}"/>
+        <Button x:Name="commaBtn" 
+                Click="commaBtn_Click"
+                Content=","
+                Margin="5"
+                FontSize="20"
+                Grid.Column="2"
+                Grid.Row="6" Background="{StaticResource numbersColor}"/>
+    </Grid>
+</Window>
